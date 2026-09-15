@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Guilherme Lao">
+    <meta name="keywords" content="API, integração, desenvolvimento web, web, backend">
+    <link rel="stylesheet" href="style.css">
+    <title>APIs e integração</title>
+</head>
+
+<body>
+    <header class="header">
+        <a href="/">
+            <h1>APIs e integrção</h1>
+        </a>
+        <nav>
+            <ul class="nav-list">
+                <li class="nav-item"><a href="#introduction">Introdução</a></li>
+                <li class="nav-item"><a href="#development">Desenvolvimento</a></li>
+                <li class="nav-item"><a href="#conclusion">Conclusão</a></li>
+                <li class="nav-item"><a href="#refs">Referências</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="introduction" id="introduction">
+        <div>
+
+            <br><br>
+            <hr>
+            <h1>Introdução</h1>
+            <hr>
+            <br>
+
+            <p>
+                As <span lang="en">APIs</span> (Application Programming Interfaces) tornaram-se o pilar
+                fundamental da comunicação digital moderna, permitindo que sistemas de software
+                heterogêneos troquem dados de forma eficiente. Em um ecossistema tecnológico distribuído,
+                elas funcionam como pontes essenciais que viabilizam a interoperabilidade entre aplicações
+                locais e em nuvem, garantindo a fluidez dos processos digitais.
+            </p>
+
+            <p>
+                Contudo, a integração de sistemas apresenta desafios significativos de
+                segurança e padronização. A crescente demanda por agilidade exige que as organizações
+                superem o isolamento de dados, utilizando APIs para criar fluxos de trabalho automatizados.
+                Assim, a integração deixa de ser um detalhe técnico para se tornar uma vantagem estratégica
+                na arquitetura de software contemporânea.
+            </p>
+
+            <p>
+                Este trabalho analisa o papel das APIs no processo de integração, explorando
+                as melhores práticas e os impactos dessa conectividade na eficiência operacional. O objetivo é
+                fornecer uma visão abrangente sobre como interfaces bem projetadas sustentam a inovação e a
+                escalabilidade nos negócios atuais.
+            </p>
+
+            <br><br><br>
+
+        </div>
+    </section>
+
+    <section class="development" id="development">
+        <div>
+
+            <h1>Desenvolvimento</h1>
+            <br><br>
+
+            <article>
+                <h2>O que é uma API?</h2>
+                <hr>
+                <div class="api-def">
+                    <img src="./images/o-que-e-uma-api.png">
+                    <p>
+                        Uma <span lang="en">API</span> (Application Programming Interface) é uma interface de
+                        computação
+                        que define as interações entre diferentes componentes de software. Ela atua como um
+                        intermediário que permite que duas aplicações "conversem" entre si por meio de um conjunto
+                        definido de regras, protocolos e ferramentas. Do ponto de vista técnico, a API funciona como
+                        uma camada de abstração: ela encapsula a lógica interna complexa de um sistema e expõe
+                        apenas as funcionalidades necessárias para o consumo externo.
+                    </p>
+
+                    <p>
+                        Essa interface estabelece um contrato de serviço, onde são definidos os tipos
+                        de requisições que podem ser feitas, como fazê-las e quais formatos de dados serão
+                        retornados
+                        (como <abbr title="JavaScript Object Notation">JSON</abbr> ou <abbr
+                            title="Extensible Markup Language">XML</abbr>). Isso garante que sistemas heterogêneos,
+                        independentemente da
+                        linguagem de programação ou infraestrutura, possam trocar informações com segurança e
+                        previsibilidade, sem a necessidade de acesso direto ao banco de dados ou ao código-fonte
+                        original.
+                    </p>
+
+                    <br><br><br>
+            </article>
+
+            <article>
+                <h2>A importância de uma API</h2>
+                <hr>
+
+                <p>
+                    A importância das APIs no cenário tecnológico contemporâneo reside
+                    primordialmente na sua capacidade de promover a interoperabilidade e a modularidade entre
+                    sistemas distintos. Elas atuam como o motor da inovação, permitindo que organizações
+                    integrem serviços especializados de terceiros — como gateways de pagamento, mapas ou
+                    ferramentas de inteligência artificial — sem a necessidade de desenvolver essas funcionalidades
+                    do zero, o que reduz drasticamente custos e o tempo de lançamento no mercado (time-to-
+                    market). Além de facilitar a criação de ecossistemas digitais integrados, as APIs oferecem uma
+                    camada crítica de segurança e governança, garantindo que o compartilhamento de dados ocorra
+                    de forma controlada e auditável, permitindo que as empresas escalem suas operações de
+                    maneira flexível e eficiente na nuvem.
+                </p>
+
+                <br><br><br>
+            </article>
+
+            <article>
+                <h2>Tipos de APIs</h2>
+                <hr>
+
+                <p>
+                    A classificação das APIs varia de acordo com sua arquitetura, protocolos de
+                    comunicação e finalidades específicas de integração. A seguir, são apresentados os modelos
+                    mais proeminentes e utilizados no desenvolvimento de software moderno:
+                </p>
+
+                <br>
+
+                <ul class="apitypes-list">
+
+                    <li class="apitypes-item">
+
+                        <div class="apitypes-tittle">
+                            <h3 id="rest-type">REST</h3>
+                        </div>
+
+                        <p>
+                            Amplamente utilizado na web por ser leve e usar métodos HTTP
+                            (GET, POST etc.), facilitando a comunicação entre navegadores e servidores.
+                        </p>
+                    </li>
+
+                    <li class="apitypes-item">
+
+                        <div class="apitypes-tittle">
+                            <h3 id="soap-type">SOAP</h3>
+                        </div>
+
+                        <p>
+                            Um protocolo mais rígido baseado em XML, preferido por grandes
+                            corporações e bancos devido aos seus padrões elevados de segurança e
+                            conformidade.
+                        </p>
+                    </li>
+
+                    <li class="apitypes-item">
+
+                        <div class="apitypes-tittle">
+                            <h3 id="graphql-type">GraphQL</h3>
+                        </div>
+
+                        <p>
+                            Uma alternativa moderna que permite ao cliente solicitar apenas
+                            os dados específicos de que precisa, otimizando o tráfego de rede.
+                        </p>
+                    </li>
+                </ul>
+                <br>
+            </article>
+
+            <article>
+                <h2>As APIs REST</h2>
+                <hr>
+                <div class="api-rest">
+                    <p id="rest-p1">
+                        As APIs REST (Representational State Transfer) consolidaram-se como o
+                        padrão de mercado devido à sua simplicidade e perfeito alinhamento com a arquitetura da Web.
+                        Diferente de protocolos mais rígidos, o modelo REST baseia-se em princípios fundamentais
+                        como a ausência de estado (<span lang="en">statelessness</span>), o que significa que cada
+                        requisição contém todas as
+                        informações necessárias para ser processada.
+                    </p>
+
+                    <p id="rest-p2">
+                        Sua popularidade deve-se, em grande parte, ao uso de métodos HTTP padrão
+                        (GET, POST, PUT, DELETE) e ao suporte ao formato JSON (JavaScript Object Notation), que
+                        é extremamente leve e de fácil leitura. Essa flexibilidade permite que desenvolvedores
+                        construam sistemas altamente escaláveis e de alta performance, sendo a escolha preferencial
+                        para aplicações móveis, serviços em nuvem e a maioria das integrações web modernas.
+                    </p>
+                </div>
+                <br><br><br>
+
+            </article>
+
+            <article>
+                <h2>Integração</h2>
+                <hr>
+                <div class="integration">
+                    <p>
+                        A integração de APIs representa o processo de conectar sistemas e aplicações
+                        heterogêneos para permitir um fluxo contínuo e automatizado de dados, superando
+                        definitivamente o isolamento de informações em "silos" organizacionais. Tradicionalmente, as
+                        corporações dependiam de middlewares complexos e codificação personalizada, como os
+                        Barramentos de Serviços Corporativos (ESB) e estruturas rígidas de Integração de Aplicativos
+                        Empresariais (EAI). Conforme apontado em análises técnicas de organizações de referência
+                        como a IBM, essas soluções legadas costumavam ser dispendiosas, difíceis de manter e lentas
+                        para se adaptar às demandas de um mercado dinâmico.
+                    </p>
+                    <br>
+                    <div class="integration-img">
+                        <img src="./images/api-integracao.png" width="auto" height="300px">
+                    </div>
+                    <br>
+                    <p>
+                        Com a evolução para ambientes de nuvem híbrida e o surgimento de
+                        plataformas de integração modernas (como o iPaaS), as APIs tornaram-se o meio definitivo de
+                        simplificar esse cenário. Estudos de arquitetura de sistemas, como os publicados no Sarcouncil
+                        Journal e relatórios técnicos da AWS, revelam que a transição de middlewares tradicionais para
+                        ecossistemas modernos baseados em APIs pode reduzir a complexidade de desenvolvimento
+                        em mais de 60%, além de otimizar expressivamente a latência de comunicação. Esse novo
+                        paradigma de integração confere às organizações a agilidade necessária para incorporar novas
+                        tecnologias e automatizar fluxos de trabalho de ponta a ponta com máxima eficiência e
+                        segurança.
+                    </p>
+                </div>
+                <br><br><br>
+
+            </article>
+
+            <article>
+                <hr>
+                <div id="benefits">
+                    <h2>Benefícios e <br>facilidades</h2>
+                    <div class="vert-line"></div>
+                    <p>
+                        A criação de APIs reduz drasticamente o tempo de desenvolvimento (time-to-market), pois permite
+                        a reutilização de componentes e a automação de tarefas manuais,
+                        proporcionando uma arquitetura de software mais flexível e fácil de manter.
+                    </p>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <section class="conclusion" id="conclusion">
+        <div>
+            <br>
+            <hr>
+            <h1>Considerações finais</h1>
+            <hr>
+            <br>
+
+            <p>
+                Em suma, as APIs consolidaram-se como pontes de comunicação seguras e
+                eficientes entre sistemas heterogêneos, atuando como ativos estratégicos indispensáveis na
+                economia digital contemporânea. A análise das arquiteturas <a href="#rest-type">REST</a>, <a
+                    href="#soap-type">SOAP</a> e <a href="#graphql-type">GraphQL</a>
+                evidenciou que a correta escolha de interface simplifica o desenvolvimento e garante a
+                escalabilidade dos negócios. Além de otimizar a performance técnica, a transição de
+                barramentos legados (ESB) para ecossistemas modernos orientados a APIs elimina os silos de
+                informação, reduzindo a complexidade de integração empresarial e acelerando o time-to-
+                market. Assim, as APIs superam barreiras operacionais e sustentam com agilidade a automação,
+                a nuvem híbrida e a transformação digital das organizações.
+            </p>
+        </div>
+    </section>
+
+    <br><br>
+    <hr id="hr-refs"><br><br>
+
+    <section class="refs" id="refs">
+        <h1>Referências</h1>
+        <br>
+
+        <ul class="ref-list">
+            <li class="ref-item">
+                <p>
+                    1 ALURA. Entenda o que é uma API e sua importância. Alura Cursos Online, 29 fev. 2024.
+                    Disponível em: <a
+                        href="https://www.alura.com.br/artigos/api">https://www.alura.com.br/artigos/api</a>. Acesso em:
+                    19 ago. 2026.
+                </p>
+            </li>
+
+            <li class="ref-item">
+                <p>
+                    2 DEVMEDIA. O que é API? O Guia Completo para Entender a Integração de Sistemas.
+                    DevMedia, 2026. Disponível em: <a
+                        href="https://www.devmedia.com.br/o-que-e-api-o-guia-
+                    completo-para-entender-a-integracao-de-sistemas/44620">https://www.devmedia.com.br/o-que-e-api-o-guia-
+                        completo-para-entender-a-integracao-de-sistemas/44620</a>. Acesso em: 19 ago. 2026.
+                </p>
+            </li>
+
+            <li class="ref-item">
+                <p>
+                    3 MARFIN. O que é API: O Guia Completo para Não-Devs. Marfin Blog, 19 ago. 2026.
+                    Disponível em: <a href="https://blog.marfin.co/o-que-e-api-o-guia-completo-para-nao-devs-
+                    2026">https://blog.marfin.co/o-que-e-api-o-guia-completo-para-nao-devs-2026</a>. Acesso em: 19 ago.
+                    2026.
+                </p>
+            </li>
+
+            <li class="ref-item">
+                <p>
+                    4 MICROSOFT. Práticas recomendadas para design de API Web RESTful. Azure
+                    Architecture Center | Microsoft Learn, 2026. Disponível em: <a
+                        href="https://learn.microsoft.com/pt-br/azure/architecture/best-practices/api-design">https://learn.microsoft.com/pt-br/azure/architecture/best-practices/api-design</a>.
+                    Acesso em: 19 ago. 2026.
+                </p>
+            </li>
+
+            <li class="ref-item">
+                <p>
+                    5 NIETSCHE, Monica. Conheça 3 Métodos de Autenticação de APIs. Blog InterGATE, 5
+                    maio 2020. Disponível em: <a
+                        href="https://www.intergate.net.br/blog/">https://www.intergate.net.br/blog/</a>. Acesso em: 19
+                    ago. 2026.
+                </p>
+            </li>
+
+            <li class="ref-item">
+                <p>
+                    6 SAP. O que é integração de APIs e como ela transforma a TI empresarial. SAP, 18 jun.
+                    2025. Disponível em: <a
+                        href="https://www.sap.com/brazil/resources/api-integration">https://www.sap.com/brazil/resources/api-integration</a>.
+                    Acesso em: 19 ago. 2026.
+                </p>
+            </li>
+
+            <li class="ref-item">
+                <p>
+                    7 SEMTCHUK, Sarah Carnevali; ANDRADE, Vinicius Santos. A API como ativo
+                    estratégico: modelos de monetização e impactos arquiteturais em marketplaces. Revista
+                    E&S, Piracicaba, 11 ago. 2026. DOI: 10.22167/2675-6528-202601442. Disponível em: <a
+                        href="https://revistaes.com.br/artigos/">https://revistaes.com.br/artigos/</a>. Acesso em: 19
+                    ago. 2026.
+                </p>
+            </li>
+
+            <li class="ref-item">
+                <p>
+                    8 TOBIN, Donal. Top REST API Best Practices for Data Integration. Integrate.io, 11 fev.
+                    2026. Disponível em: <a href="https://www.integrate.io/blog/top-rest-api-best-practices-for-data-
+                    integration/">https://www.integrate.io/blog/top-rest-api-best-practices-for-data-integration/</a>.
+                    Acesso em: 19 ago. 2026.
+                </p>
+            </li>
+        </ul>
+        <br><br><br>
+    </section>
+</body>
+
+<footer>
+    <div class="footer-div">
+        <div>
+            <br>
+            <p>criado por Guilherme Lao</p>
+            <p>e-mail: guilhermelao2007@gmail.com</p>
+            <br><br><br>
+        </div>
+    </div>
+</footer>
+
+</html>
