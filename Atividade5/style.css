@@ -1,0 +1,79 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.mediaq{
+    display: flex;
+    justify-content: center;
+}
+
+@media (max-width: 420px){
+    .mediaq{
+        background-color: gray;
+    }
+
+    .mediaq h2::before{
+        content: "Cinza";
+    }
+}
+
+@media (min-width: 421px) and (max-width: 768px){
+    .mediaq{
+        background-color: orangered;
+    }
+
+    .mediaq h2::before{
+        content: "Laranja";
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px){
+    .mediaq{
+        background-color: blueviolet;
+    }
+
+    .mediaq h2::before{
+        content: "Violeta";
+    }
+}
+@media (min-width: 1025px) and (max-width: 1080px){
+    .mediaq{
+        background-color: red;
+    }
+
+    .mediaq h2::before{
+        content: "Vermelho";
+    }
+}
+
+@media (min-width: 1081px) and (max-width: 1366px){
+    .mediaq{
+        background-color: darkblue;
+    }
+
+    .mediaq h2::before{
+        content: "Azul escuro";
+    }
+}
+
+@media (min-width: 1367px) and (max-width: 1920px){
+    .mediaq{
+        background-color: yellow;
+    }
+
+    .mediaq h2::before{
+        content: "Amarelo";
+    }
+}
+
+@media (min-width: 1921px){
+    .mediaq{
+        background-color: green;
+    }
+
+    .mediaq h2::before{
+        content: "Verde";
+    }
+}
