@@ -1,0 +1,32 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+}
+
+ul{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+button{
+    width: 150px;
+    height: 150px;
+    display: block;
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+    border-radius: 7px;
+}
+
+img{
+    width: inherit;
+    height: inherit;
+}

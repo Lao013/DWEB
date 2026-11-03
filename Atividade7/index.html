@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <title>Pedra, papel e tesoura</title>
+</head>
+
+<body>
+    <ul>
+        <li><button onclick="jogo('pedra')"><img src="./images/pedra.png" alt="">PEDRA</button></li>
+        <li><button onclick="jogo('papel')"><img src="./images/papel.png" alt="">PAPEL</button></li>
+        <li><button onclick="jogo('tesoura')"><img src="./images/tesoura.png" alt="">TESOURA</button></li>
+    </ul>
+
+    <script>
+        let escolhaUsr;
+        let escolhaMaq;
+
+        console.log(escolhaMaq);
+        console.log(escolhaUsr);
+        const opcoes = ["pedra", "papel", "tesoura"];
+
+        function jogo(valor) {
+            escolhaUsr = valor;
+            escolhaMaq = opcoes[Math.floor(Math.random() * opcoes.length)];
+
+            if (escolhaMaq === escolhaUsr) {
+                alert("Empate!");
+            } else if ((escolhaUsr === "pedra" && escolhaMaq === "tesoura") ||
+                (escolhaUsr === "tesoura" && escolhaMaq === "papel") ||
+                (escolhaUsr === "papel" && escolhaMaq === "pedra")) {
+
+                alert("Você ganhou!");
+            }
+            else {
+                alert("Você perdeu");
+            }
+        }
+    </script>
+</body>
+
+</html>
