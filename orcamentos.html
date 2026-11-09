@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CORUS — Informações dos Orçamentos</title>
+  <link rel="stylesheet" href="orcamentos.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+  <div class="app-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-logo">C</div>
+        <div>
+          <h1>CORUS</h1>
+          <span>Gestão de Orçamentos</span>
+        </div>
+      </div>
+
+      <nav class="nav-menu">
+        <a href="dashboard.html" class="nav-item" aria-label="Dashboard">
+          <span class="nav-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M4 19V5m0 14h16M8 16v-5m4 5V7m4 9v-7m4 7V4" /></svg>
+          </span>
+          <span class="nav-label">Dashboard</span>
+        </a>
+        <a href="orcamentos.html" class="nav-item active" aria-label="Informações dos Orçamentos">
+          <span class="nav-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M8 5H5v15h14V5h-3M9 4h6v3H9zM8 11h8m-8 4h8" /></svg>
+          </span>
+          <span class="nav-label">Informações dos Orçamentos</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div id="db-status-indicator" class="db-badge local">
+          <span class="dot"></span>
+          <span id="db-status-text">Banco Local (Sync)</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Conteúdo Principal -->
+    <main class="main-content">
+      <header class="top-header">
+        <div>
+          <h2>Informações dos Orçamentos</h2>
+          <p class="subtitle">Consulta detalhada, engenharia de custos, itens, fluxo de aprovação e auditoria</p>
+        </div>
+        <button id="btn-new-quote" class="btn-primary">+ Criar Orçamento</button>
+      </header>
+
+      <!-- Layout Mestre-Detalhe -->
+      <div class="quotes-workspace">
+        <section class="quotes-list-panel">
+          <div class="quotes-list-header">
+            <h3>Orçamentos cadastrados</h3>
+            <span id="quotes-list-count" class="subtitle" aria-live="polite"></span>
+          </div>
+          <div class="filters-bar">
+            <input type="text" id="filter-search" aria-label="Buscar orçamento" placeholder="Buscar por código, cliente ou escopo..." />
+            <select id="filter-status" aria-label="Filtrar orçamentos por status">
+              <option value="todos">Todos os Status</option>
+              <option value="rascunho">Rascunho</option>
+              <option value="em_analise">Em Análise</option>
+              <option value="enviado">Enviado</option>
+              <option value="aprovado">Aprovado</option>
+              <option value="rejeitado">Rejeitado</option>
+            </select>
+          </div>
+          <select id="quotes-list-container" class="quotes-quote-select" aria-label="Selecionar orçamento"></select>
+        </section>
+
+        <section id="quote-detail-panel" class="quote-detail-panel">
+          <!-- Preenchido dinamicamente pelo orcamentos.js -->
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <!-- Modal para Criar / Editar Orçamento -->
+  <div id="quote-form-modal" class="modal-backdrop hidden">
+    <div class="modal modal-lg">
+      <div class="modal-header">
+        <h3 id="modal-form-title">Novo Orçamento</h3>
+        <button id="btn-close-form-modal" class="btn-icon" aria-label="Fechar">×</button>
+      </div>
+      <form id="quote-form">
+        <input type="hidden" id="form-id" />
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="form-codigo">Código</label>
+            <input type="text" id="form-codigo" required placeholder="Ex: ORC-2026-005" />
+          </div>
+          <div class="form-group">
+            <label for="form-status">Status Inicial</label>
+            <select id="form-status">
+              <option value="rascunho">Rascunho</option>
+              <option value="em_analise">Em Análise</option>
+              <option value="enviado">Enviado ao Cliente</option>
+              <option value="aprovado">Aprovado</option>
+              <option value="rejeitado">Rejeitado</option>
+            </select>
+          </div>
+          <div class="form-group full-width">
+            <label for="form-titulo">Título / Escopo do Projeto</label>
+            <input type="text" id="form-titulo" required placeholder="Descrição principal do orçamento" />
+          </div>
+          <div class="form-group">
+            <label for="form-cliente">Cliente</label>
+            <input type="text" id="form-cliente" required placeholder="Razão Social / Nome" />
+          </div>
+          <div class="form-group">
+            <label for="form-cnpj">CNPJ</label>
+            <input type="text" id="form-cnpj" placeholder="00.000.000/0001-00" />
+          </div>
+          <div class="form-group">
+            <label for="form-orcamentista">Orçamentista Responsável</label>
+            <input type="text" id="form-orcamentista" required placeholder="Nome do responsável" />
+          </div>
+          <div class="form-group">
+            <label for="form-validade">Validade da Proposta</label>
+            <input type="date" id="form-validade" required />
+          </div>
+          <div class="form-group">
+            <label for="form-custo">Custo Base (R$)</label>
+            <input type="number" step="0.01" id="form-custo" required value="0" />
+          </div>
+          <div class="form-group">
+            <label for="form-margem">Margem / BDI (%)</label>
+            <input type="number" step="0.1" id="form-margem" required value="20" />
+          </div>
+          <div class="form-group">
+            <label for="form-impostos">Impostos (%)</label>
+            <input type="number" step="0.1" id="form-impostos" required value="12" />
+          </div>
+          <div class="form-group">
+            <label for="form-desconto">Desconto Comercial (R$)</label>
+            <input type="number" step="0.01" id="form-desconto" required value="0" />
+          </div>
+          <div class="form-group full-width">
+            <label for="form-observacoes">Observações Técnicas e Condições Comerciais</label>
+            <textarea id="form-observacoes" rows="3"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="btn-cancel-form" class="btn-secondary">Cancelar</button>
+          <button type="submit" class="btn-primary">Salvar no Banco de Dados</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="orcamentos.js"></script>
+</body>
+</html>
